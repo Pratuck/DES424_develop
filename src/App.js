@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          จะได้ไหม
+          จะได้ไหม จริงไหม
         </p>
         <a
           className="App-link"
