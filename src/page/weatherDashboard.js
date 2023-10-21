@@ -47,7 +47,7 @@ const Index = () => {
       <nav>
         <ul>
           <li>Dashboard</li>
-          <li><a style = {{color: 'white'}} href ="/statistic">Statistics</a></li>
+          <li><button><a style = {{color: 'white'}} href ="/statistic">Statistics</a></button></li>
           <li>Help</li>
         </ul>
       </nav>
@@ -75,7 +75,7 @@ const Index = () => {
       <nav class = "sidebar">
         <ul>
           <li>Dashboard</li>
-          <li><a style = {{color: 'white'}} href ="/statistic">Statistics</a></li>
+          <li><button><a style = {{color: 'white'}} href ="/statistic">Statistics</a></button></li>
           <li>Help</li>
         </ul>
       </nav>
@@ -156,7 +156,7 @@ const Index = () => {
         <nav>
           <ul>
             <li>Dashboard</li>
-            <li><a style = {{color: 'white'}} href ="/statistic">Statistics</a></li>
+            <li><button><a style = {{color: 'white', fontFamily: "'Arial', sans-serif"}} href ="/statistic">Statistics</a></button></li>
             <li>Help</li>
           </ul>
         </nav>

@@ -59,11 +59,9 @@ const loginPath="https://8mciuqteg9.execute-api.us-east-1.amazonaws.com/v1/login
       </form>
 
       <div>
-        <button className="login-button">
-        <Link className="link" to="/registers">
+        <a href = "/registers" ><button className="link login-button">
           Create Account
-        </Link>
-        </button>
+        </button></a>
       </div>
     </div>
   );

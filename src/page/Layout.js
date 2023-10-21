@@ -11,13 +11,13 @@ function Header() {
   return (
     <div className="nav">
       <div className="list">      
-        <Link className="link" to="/">Weather Dashbord</Link>
-        <Link className="link" to="/user">Token</Link>
+        <a href = "/"><button className="link">Weather Dashbord</button></a>
+        <a href = "/user"><button className="link">Token</button></a>
         {!getToken() &&
-        <Link className="link" to="/login">Login</Link>
+        <a href = "/login"><button className="link">Login</button></a>
         }
         {
-          getToken()&&<Link className="link" to="login" onClick={logoutHandler}>Logout</Link>
+          getToken()&&<a href = "/login"><button className="link" onClick={logoutHandler}>Logout</button></a>
         }
       </div>
     </div>
