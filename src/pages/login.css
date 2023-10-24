@@ -1,0 +1,19 @@
+
+.main-login{
+}
+.input-container {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    border: 1px solid #ccc; 
+
+  }
+  
+  .input-container h3 {
+    margin-right: 10px; 
+  }
+  
+  .input-container input {
+    padding: 5px; 
+    border: 1px solid #ccc; 
+  }
