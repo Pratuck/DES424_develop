@@ -14,6 +14,19 @@ const Registers = () => {
             </div>
           </div>
           <div className='callum2'>
+            <div className='rab'>
+              <div >
+                <h1>Register</h1>
+                <input type="text" placeholder="USERNAMR"></input>
+                <br></br>
+                <input type="text" placeholder="PASSWORD"></input>
+                <br></br>
+                <input type="text" placeholder="CONFIRME PASSWORD"></input>
+                <br></br>
+                <button>CREATE</button>
+              </div>
+            </div>
+            
             
           </div>
         </div>
