@@ -15,7 +15,7 @@ const Registers = () => {
           </div>
           <div className='callum2'>
             <div className='rab'>
-              <div >
+              <div>
                 <h1>Register</h1>
                 <input type="text" placeholder="USERNAMR"></input>
                 <br></br>
