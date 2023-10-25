@@ -1,0 +1,47 @@
+
+
+
+.page-regis {
+    margin-left: 200px;
+    margin-right: 200px;
+    height: 550px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.callum1 {
+    width: 500px;
+}
+
+.block1 {
+    background-image: url(img/mountain\ illusration2.jpg);
+    background-size: cover;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    margin-top: 0;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+}
+.block2 {
+    background-image: url(img/wallpaper_mikael_gustafsson.png);
+    background-size: cover;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    margin-top: 25px;
+    height: 275px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+}
+
+.callum2 {
+    background-color: #68A4AC;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    width: 500px;
+    border-radius: 50px;
+
+
+}
