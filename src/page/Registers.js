@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './register.css'
 
 
@@ -23,7 +24,7 @@ const Registers = () => {
                 <br></br>
                 <input type="text" placeholder="CONFIRME PASSWORD"></input>
                 <br></br>
-                <button>CREATE</button>
+                <button><Link className="btlink" to="/user">CREATE</Link></button>
               </div>
             </div>
             
