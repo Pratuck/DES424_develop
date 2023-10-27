@@ -1,17 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
-import Login from './pages/login.js';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
-
-function App() {
-  return (
-    <Router>
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./page/Layout";
+import Weather_Dashbord from "./page/Weather_Dashbord";
+import Login from "./page/Login";
+import Registers from "./page/Registers";
+import User from "./page/User";
+export default function App() {
+  return ( 
+    <div >
+      <BrowserRouter>
       <Routes>
-        <Route path='/login' element={<Login />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Weather_Dashbord />} />
+          <Route path="login" element={<Login />} />
+          <Route path="registers" element={<Registers />} />
+          <Route path="user" element={<User />} />
+        </Route>
       </Routes>
-    </Router>
+    </BrowserRouter>
+    </div>
+    
+    
   );
 }
 
-export default App;
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+

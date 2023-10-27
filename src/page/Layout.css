@@ -1,0 +1,36 @@
+
+
+
+
+.body-layout {
+    background-color: #CDDCDC;
+    padding-top: 70px;
+    height: 706px;
+}
+.link {
+    font-size: larger;
+    color: aliceblue;
+}
+.list {
+    margin-left: 200px;
+    margin-right: 200px;
+    padding-left: 50px;
+    padding-right: 50px;
+    background-color:#68A4AC;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    border-radius: 50px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    
+}
+ul {
+    display: flex;
+    align-content: center;
+}
