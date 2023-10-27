@@ -1,0 +1,28 @@
+.centered-component {
+    text-align: center; /* Center horizontally */
+    display: flex;
+    justify-content: center;
+
+}
+
+.input-container {
+    display: flex;
+    align-items: center; /* Center vertically */
+    text-align: center;
+}
+.input-container h3 {
+    margin: 0; /* Remove default margin for <h2> */
+    padding: 10px; /* Add some padding for spacing */
+    border-radius: 10px;
+    color: aliceblue ;
+  }
+  
+  .input-container input {
+    padding: 10px; /* Add some padding for spacing */
+    border: 2px solid #ccc;
+    border-radius: 10px;
+  }
+body {
+    background-image: url('C:\Users\Admin\Desktop\DES424_dev\DES424_develop\src\page\img\Download Mountains in the night_ for free.jpg') !important;
+    background-size: cover; /* Adjust to fit the image as needed */
+}
