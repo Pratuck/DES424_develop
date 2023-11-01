@@ -1,0 +1,92 @@
+.body-user {
+    margin-left: 200px;
+    margin-right: 200px;
+    height: 550px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.body-user .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.user-image img{
+    margin: 50px;
+    width: 250px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 50px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+.user-profile{
+    padding: 20px;
+    padding-left: 5px;
+    padding-top: 80px;
+    background-color: #68A4AC;
+    border-radius: 20px;
+    margin: 10px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+.user-profile ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    list-style-type: none;
+}
+
+.user-profile ul li {
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 10px;
+}
+
+.user-profile ul li label{
+    flex:1;
+    float: left;
+    font-size: 20px;
+    font-style: bold;
+    margin-right: 20px;
+}
+
+.user-profile ul li input{
+    margin-top: 0;
+    font-size: 20px;
+    flex:1;
+}
+
+.user-profile ul li button{
+    margin-top: 15px;
+    flex:1;
+    background-color: aliceblue
+}
+
+.user-profile ul li button:hover{
+    color: aliceblue;
+    background-color: rgb(38, 57, 77);
+}
+
+.user-APIkey {
+    text-align: center;
+    margin-top: 10px;
+    padding: 20px;
+    background-color: aliceblue;
+    border-radius: 20px;
+    border: 5px solid #68A4AC;
+    transition: 0.3s;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+.user-APIkey:hover {
+    cursor: pointer;
+    color: aliceblue;
+    border: 5px solid rgb(38, 57, 77);
+    background-color: rgb(38, 57, 77);
+}

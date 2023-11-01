@@ -1,28 +1,88 @@
+
 .centered-component {
-    text-align: center; /* Center horizontally */
-    display: flex;
+
+    display:flex;
     justify-content: center;
+    flex-direction: column;
 
 }
-
-.input-container {
-    display: flex;
-    align-items: center; /* Center vertically */
-    text-align: center;
+/* Login Container */
+.login-container {
+  max-width: 400px;
+  margin: 100px auto 20px; 
+  padding: 20px;
+  background-color: #68A4AC;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-.input-container h3 {
-    margin: 0; /* Remove default margin for <h2> */
-    padding: 10px; /* Add some padding for spacing */
-    border-radius: 10px;
-    color: aliceblue ;
-  }
-  
-  .input-container input {
-    padding: 10px; /* Add some padding for spacing */
-    border: 2px solid #ccc;
-    border-radius: 10px;
-  }
-body {
-    background-image: url('C:\Users\Admin\Desktop\DES424_dev\DES424_develop\src\page\img\Download Mountains in the night_ for free.jpg') !important;
-    background-size: cover; /* Adjust to fit the image as needed */
+
+/* Login Header */
+.login-header {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Input Groups */
+.input-group {
+  margin-bottom: 15px;
+}
+
+/* Input Fields */
+.input-field {
+  width: 95%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+
+/* Password Toggle Label */
+.password-toggle-label {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Create Account Link */
+.link {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: #0f1010;
+  font-weight: bold;
+  width: 100%;
+}
+
+.link:hover {
+  text-decoration: underline;
+  color:white;
+}
+
+.login-button {
+
+  font-weight: bold;
+  background-color:white;
+  border-radius: 10px;
+  margin: 1px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  height:50px;
+  transition: .5s;
+}
+button:hover {
+  cursor: pointer;
+  background-color: black;
+  color: aliceblue;
+}
+.password-checkbox {
+  margin-top: 5px;
+  border: none;
+  border-radius: 12px;
+  height: 15px;
+  width: 20px;
+}
+.errmsg{
 }
