@@ -1,0 +1,160 @@
+/* Reset some basic elements */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Set up the main layout */
+  .weather-app {
+    display: flex;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Sidebar styles */
+  .sidebar {
+    background-color: #2C3E50;
+    color: white;
+    min-width: 200px;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .sidebar nav ul li {
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  /* Main content styles */
+  .main-content {
+    flex-grow: 1;
+    padding: 1em;
+    background-color: #ECF0F1;
+  }
+  
+  .main-content header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .main-content header input,
+  .main-content header select {
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    margin-right: 10px;
+  }
+  
+  /* Weather dashboard styles */
+  .weather-dashboard {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .weather-dashboard h2 {
+    margin-top: 0;
+  }
+  
+  .weather-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .temperature {
+    font-size: 3em;
+    margin-right: 20px;
+    margin-bottom: 0;
+  }
+  
+  .weather-description {
+    font-size: 1.5em;
+    margin-bottom: 0;
+  }
+  
+  .details {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  
+  .details div {
+    width: 50%;
+    margin-bottom: 10px;
+  }
+
+  .search-bar {
+    gap: 10px; /* Adjust the gap as needed */
+  }
+  
+  .search-bar input,
+  .search-bar button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Align the input and button properly */
+  .search-bar button {
+    cursor: pointer;
+    border-left: none; 
+  }
+  .province-suggestions {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    max-height: 200px; /* Adjust as needed */
+    overflow-y: auto;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    position: absolute;
+    width: 100%;
+  }
+  
+  .province-suggestions li {
+    padding: 8px 12px;
+    cursor: pointer;
+  }
+  
+  .province-suggestions li:hover {
+    background-color: #f0f0f0;
+  }
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .weather-app {
+      flex-direction: column;
+    }
+  
+    .sidebar {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  
+    .main-content header {
+      flex-direction: column;
+    }
+  
+    .main-content header input,
+    .main-content header select {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  
+    .details div {
+      width: 100%;
+    }
+  }
+  

@@ -1,0 +1,3 @@
+{
+    "AWS_REST_ENDPOINT":"https://y86e5uslt8.execute-api.us-east-1.amazonaws.com/v1/lambda?province=Bangkok"
+}
