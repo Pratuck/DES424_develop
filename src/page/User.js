@@ -2,12 +2,31 @@ import './Layout.css'
 import './register.css'
 import './User.css'
 import userImage from "./img/Lakeside_Sunrise_3840x2160.jpg";
+import React, {  useState } from 'react';
+import { getUser } from '../services/AuthService';
+
+
 
 const User = () => {
+  const [validRequest,setValidReauest]=useState(true)
+  const [copied, setCopied] = useState(false);
 
-  let api = "sample api";
+  const username=getUser().username
+  const token=getUser().apikey.S
   let imgscr = userImage;
-
+  const getApi=()=>{
+    setValidReauest(false)
+  }
+  const copyToClipboard = async (text) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000); 
+    } catch (err) {
+      console.error('Failed to copy text: ', err);
+    }
+  };
+  
   return (
     <div class = "body-user">
       <div class = "row">
@@ -18,26 +37,27 @@ const User = () => {
           <ul>
             <li>
               <label>Username</label>
-              <input name = "Username" value = "placeholder" disabled />
+              <input name = "Username" value = {username} disabled />
             </li>
             <li>
-              <label>Login Date</label>
-              <input name = "date" value = "placeholder" disabled />
+              <label>Token status</label>
+              <input name = "date" value = "valid" disabled style={{ color: 'green' }}/>
             </li>
             <li>
-              <label>Token</label>
-              <input name = "Token" value = "placeholder" disabled />
-            </li>
-            <li>
-              <button name = "requestToken">Request Token</button>
+              {validRequest&&<button name = "requestToken"  onClick={getApi}>Request Token</button>}
             </li>
           </ul>
         </div>
       </div>
-      <div class = "user-APIkey">
+      {!validRequest&&<div>
         <label>Click to copy API: </label>
-        <label class = "apikey">{api}</label>
-      </div>
+        <div>
+        <button className="apikey-button" onClick={() => copyToClipboard(token)}>{token}</button>
+        </div>
+        {copied && <span style={{ color: 'green' }}>Copied!</span>}
+        </div>
+        }
+        
     </div>
   );
 };

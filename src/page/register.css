@@ -80,3 +80,18 @@ button:hover {
 .btlink:hover {
     color: whitesmoke;
 }
+.inputSubmit{
+    margin-top: 50px;
+    border: none;
+    height: 30px;
+    background-color: white;
+    border-radius: 10px;
+    transition: .5s;
+}
+.inputSubmit:hover {
+    cursor: pointer;
+    background-color: black;
+    color: aliceblue;
+    
+}
+
