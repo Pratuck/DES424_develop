@@ -1,11 +1,17 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useQuery } from 'react-query';
-import "./Weather_Dashboard.css"
+import styles from './weatherDashboard.module.css'
 
+const currentApiPath="https://y86e5uslt8.execute-api.us-east-1.amazonaws.com/v1/lambda?province="
 const fetchWeather = async (requestProvince) => {
+  const configRequest={
+    headers:{
+      "x-api-key":"52clg7ss2U5SZYE9PQCVs8GCzoAUBanO7SxDdhUF"
+    }
+  }
   if (!requestProvince) throw new Error("Province is required");
-  const { data } = await axios.get(`https://y86e5uslt8.execute-api.us-east-1.amazonaws.com/v1/lambda?province=${requestProvince}`);
+  const { data } = await axios.get(`${currentApiPath}${requestProvince}`,configRequest);
   return data;
 };
 const allProvinces = ['Roi Et', 'Phitsanulok', 'Kamphaeng Phet', 'Suphan Buri',
@@ -24,6 +30,9 @@ const Index = () => {
   const [inputProvince, setInputProvince] = useState("")
   const [requestProvince, setRequestProvince] = useState("Bangkok")
   const [err,setErr]=useState("")
+  const handleProvinceChange = (event) => {
+    setInputProvince(event.target.value);
+  };
 
   const { data, isError, isLoading, refetch } = useQuery(
     ['weather', requestProvince],
@@ -32,8 +41,8 @@ const Index = () => {
       enabled: requestProvince !== "" // This query will automatically run if requestProvince is not empty
     }
   );
-  if (isLoading) return (<div className="weather-app">
-    <aside className="sidebar">
+  if (isLoading) return (<div className={styles.weatherApp}>
+    <aside className={styles.sidebar}>
       <nav>
         <ul>
           <li>Dashboard</li>
@@ -42,33 +51,57 @@ const Index = () => {
         </ul>
       </nav>
     </aside>
-    <main className="main-content">
+    <main className={styles.mainContent}>
       <header>
-        <div className="search-bar">
+        <div className={styles.searchBar}>
           <input
             type="text"
             placeholder="Search For location"
             value={inputProvince}
+            onChange={handleProvinceChange}
           />
           <button>Get Weather</button>
         </div>
       </header>
-      <div className="weather-dashboard">
+      <div className={styles.weatherDashboard}>
         Loading...
-
       </div>
     </main>
   </div>);
   if (!data) {
-    return null;
+    return (<div className={styles.weatherApp}>
+    <aside className={styles.sidebar}>
+      <nav>
+        <ul>
+          <li>Dashboard</li>
+          <li>Statistics</li>
+          <li>Help</li>
+        </ul>
+      </nav>
+    </aside>
+    <main className={styles.mainContent}>
+      <header>
+        <div className={styles.searchBar}>
+          <input
+            type="text"
+            placeholder="Search For location"
+            value={inputProvince}
+            onChange={handleProvinceChange}
+          />
+          <button>Get Weather</button>
+        </div>
+      </header>
+      <div className={styles.weatherDashboard}>
+        No Weather 
+      </div>
+    </main>
+  </div>);;
   }
 
   if (isError) return 'An error has occurred';
   const { fileContent: { current }, province } = data || {};
 
-  const handleProvinceChange = (event) => {
-    setInputProvince(event.target.value);
-  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     if(allProvinces.includes(inputProvince)){
@@ -117,8 +150,8 @@ const Index = () => {
 
 
   return (
-    <div className="weather-app">
-      <aside className="sidebar">
+    <div className={styles.weatherApp}>
+      <aside className={styles.sidebar}>
         <nav>
           <ul>
             <li>Dashboard</li>
@@ -127,9 +160,9 @@ const Index = () => {
           </ul>
         </nav>
       </aside>
-      <main className="main-content">
+      <main className={styles.mainContent}>
         <header>
-          <div className="search-bar">
+          <div className={styles.searchBar}>
             <form onSubmit={handleSubmit}>
               <input
                 type="text"
@@ -142,13 +175,13 @@ const Index = () => {
             <p>{err}</p>
           </div>
         </header>
-        <div className="weather-dashboard">
+        <div className={styles.weatherDashboard}>
           <h2>{province}</h2>
-          <div className="weather-info">
-            <div className="temperature">{current.temperature_2m}°</div>
-            <img src={"weatherIcons/" + `${interpretWeatherCode(current.weather_code)}`.replace(/ /g, "_") + ".png"} alt={`${interpretWeatherCode(current.weather_code)}` + ".png"} width="100" height="100"></img>
-            <div className="weather-description">{interpretWeatherCode(current.weather_code)}</div>
-            <div className="details">
+          <div className={styles.weatherInfo}>
+            <div className={styles.temperature}>{current.temperature_2m}°</div>
+            <img src={`weatherIcons/${interpretWeatherCode(current.weather_code).replace(/ /g, "_")}.png`} alt={`${interpretWeatherCode(current.weather_code)}.png`} width="100" height="100"></img>
+            <div className={styles.weatherDescription}>{interpretWeatherCode(current.weather_code)}</div>
+            <div className={styles.details}>
               <div>Feels like {current.apparent_temperature}°</div>
               <div>Humidity {current.relative_humidity_2m}%</div>
               <div>Wind {current.wind_speed_10m}kph</div>

@@ -4,22 +4,11 @@
     margin: 0;
     padding: 0;
   }
-  body{
-    background-color: #CDDCDC;
-}
-  
   
   /* Set up the main layout */
   .weather-app {
     display: flex;
     font-family: 'Arial', sans-serif;
-    margin-left: 200px;
-    margin-right: 200px;
-    height: 550px;
-    margin-top: 30px;
-    border-radius: 20px;
-    border: 5px solid none;
-    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
   }
   
   /* Sidebar styles */
@@ -29,8 +18,9 @@
     min-width: 200px;
     padding: 1em;
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
-
   nav.sidebar {
     border-radius: 20px 0 0 20px;
     border: 5px solid none;
@@ -172,4 +162,3 @@
       width: 100%;
     }
   }
-  
