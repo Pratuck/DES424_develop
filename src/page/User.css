@@ -88,9 +88,21 @@ body{
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
-.user-APIkey:hover {
+.user-APIkey:hover{
     cursor: pointer;
     color: aliceblue;
     border: 5px solid rgb(38, 57, 77);
     background-color: rgb(38, 57, 77);
+}
+
+.user-APIkey:hover a {
+    color: white;
+}
+
+.dashboard {
+    width: 100%;
+    height: 550px;
+    border-radius: 0 20px 20px 0;
+    border: 5px solid rgb(38, 57, 77);
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
