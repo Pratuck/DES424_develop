@@ -6,6 +6,7 @@ import Login from "./page/Login";
 import Registers from "./page/Registers";
 import User from "./page/User";
 import { QueryClient, QueryClientProvider } from 'react-query' 
+import Statistics from "./page/Staticstic";
 
 const queryClient = new QueryClient()
 
@@ -20,6 +21,7 @@ export default function App() {
           <Route index element={<Weather_Dashboard />} />
           <Route path="login" element={<Login />} />
           <Route path="registers" element={<Registers />} />
+          <Route path="statistic" element={<Statistics />} />
           <Route path="user" element={<User />} />
         </Route>
       </Routes>

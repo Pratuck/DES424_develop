@@ -37,7 +37,7 @@ const Index = () => {
       <nav>
         <ul>
           <li>Dashboard</li>
-          <li>Statistics</li>
+          <li><a style = {{color: 'white'}} href ="/statistic">Statistics</a></li>
           <li>Help</li>
         </ul>
       </nav>
@@ -122,7 +122,7 @@ const Index = () => {
         <nav>
           <ul>
             <li>Dashboard</li>
-            <li>Statistics</li>
+            <li><a style = {{color: 'white'}} href ="/statistic">Statistics</a></li>
             <li>Help</li>
           </ul>
         </nav>
