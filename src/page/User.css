@@ -87,7 +87,6 @@ body{
     transition: 0.3s;
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
-
 .user-APIkey:hover{
     cursor: pointer;
     color: aliceblue;
