@@ -17,8 +17,6 @@ function ShowIframe(url){
 //change map at wish here UwU
 const Statistics = (props) => {
 
-    const [url, setUrl] = useState("");
-
     //#region URL
     //Temp urls
     const mapTempUrl = "https://us-east-1.quicksight.aws.amazon.com/sn/embed/share/accounts/107837149840/dashboards/4c7aeacb-9527-46b9-9036-fcad6a9d9333/sheets/4c7aeacb-9527-46b9-9036-fcad6a9d9333_6ff2820e-4f13-4b0d-ac0e-1c27b8b69234/visuals/4c7aeacb-9527-46b9-9036-fcad6a9d9333_256f4797-9cfa-4240-b366-cf639786e2ca?directory_alias=pongsapon2425";
@@ -31,6 +29,8 @@ const Statistics = (props) => {
     const lowestHumidProvUrl = "https://us-east-1.quicksight.aws.amazon.com/sn/embed/share/accounts/107837149840/dashboards/4c7aeacb-9527-46b9-9036-fcad6a9d9333/sheets/4c7aeacb-9527-46b9-9036-fcad6a9d9333_6ff2820e-4f13-4b0d-ac0e-1c27b8b69234/visuals/4c7aeacb-9527-46b9-9036-fcad6a9d9333_0cfc518c-939e-41a5-8f5b-a422fbc9fa40?directory_alias=pongsapon2425";
     const allHumid = "https://us-east-1.quicksight.aws.amazon.com/sn/embed/share/accounts/107837149840/dashboards/4c7aeacb-9527-46b9-9036-fcad6a9d9333/sheets/4c7aeacb-9527-46b9-9036-fcad6a9d9333_6ff2820e-4f13-4b0d-ac0e-1c27b8b69234/visuals/4c7aeacb-9527-46b9-9036-fcad6a9d9333_0bab4fdb-e9ee-4549-a082-3d4c430ac039?directory_alias=pongsapon2425";
     //#endregion 
+
+    const [url, setUrl] = useState("");
 
     return <div class = "body-user" style={{flexDirection:'row', justifyContent:'space-around'}}>
    

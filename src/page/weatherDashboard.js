@@ -41,9 +41,9 @@ const Index = () => {
       enabled: requestProvince !== "" // This query will automatically run if requestProvince is not empty
     }
   );
-  if (isLoading) return (<div className={styles.weatherApp}>
-    <aside className={styles.sidebar}>
-      <nav>
+  if (isLoading) return (<div class = "weatherApp" className={styles.weatherApp}>
+    <aside class={styles.sidebar}>
+      <nav class = "sidebar">
         <ul>
           <li>Dashboard</li>
           <li><a style = {{color: 'white'}} href ="/statistic">Statistics</a></li>
@@ -51,9 +51,9 @@ const Index = () => {
         </ul>
       </nav>
     </aside>
-    <main className={styles.mainContent}>
+    <main class = "mainContent" className={styles.mainContent}>
       <header>
-        <div className={styles.searchBar}>
+        <div class = "searchBar" className={styles.searchBar}>
           <input
             type="text"
             placeholder="Search For location"
@@ -69,19 +69,19 @@ const Index = () => {
     </main>
   </div>);
   if (!data) {
-    return (<div className={styles.weatherApp}>
-    <aside className={styles.sidebar}>
-      <nav>
+    return (<div class = "weatherApp" className={styles.weatherApp}>
+    <aside class={styles.sidebar}>
+      <nav class = "sidebar">
         <ul>
           <li>Dashboard</li>
-          <li>Statistics</li>
+          <li><a style = {{color: 'white'}} href ="/statistic">Statistics</a></li>
           <li>Help</li>
         </ul>
       </nav>
     </aside>
-    <main className={styles.mainContent}>
+    <main class = "mainContent" className={styles.mainContent}>
       <header>
-        <div className={styles.searchBar}>
+        <div class = "searchBar" className={styles.searchBar}>
           <input
             type="text"
             placeholder="Search For location"
@@ -91,7 +91,7 @@ const Index = () => {
           <button>Get Weather</button>
         </div>
       </header>
-      <div className={styles.weatherDashboard}>
+      <div className={styles.weatherDashboard} class = "weatherDashboard">
         No Weather 
       </div>
     </main>
@@ -100,6 +100,7 @@ const Index = () => {
 
   if (isError) return 'An error has occurred';
   const { fileContent: { current }, province } = data || {};
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -149,21 +150,21 @@ const Index = () => {
 
 
   return (
-    <div className={styles.weatherApp}>
-      <aside className={styles.sidebar}>
-        <nav>
-          <ul>
-            <li>Dashboard</li>
-            <li><a style = {{color: 'white'}} href ="/statistic">Statistics</a></li>
-            <li>Help</li>
-          </ul>
-        </nav>
-      </aside>
-      <main className={styles.mainContent}>
-        <header>
-          <div className={styles.searchBar}>
-            <form onSubmit={handleSubmit}>
-              <input
+    <div class = "weatherApp" className={styles.weatherApp}>
+    <aside class={styles.sidebar}>
+      <nav class = "sidebar">
+        <ul>
+          <li>Dashboard</li>
+          <li><a style = {{color: 'white'}} href ="/statistic">Statistics</a></li>
+          <li>Help</li>
+        </ul>
+      </nav>
+    </aside>
+    <main class = "mainContent" className={styles.mainContent}>
+      <header>
+        <div class = "searchBar" className={styles.searchBar}>
+        <form onSubmit={handleSubmit}>
+          <input
                 type="text"
                 placeholder="Search For location"
                 value={inputProvince}
