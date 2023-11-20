@@ -95,8 +95,8 @@ const { data, isError, isLoading, refetch } = useQuery(
         Loading...
       </div>
     </main>
-  </div>);
-  if (!data) {
+  </div>);}
+  else if (!data) {
     return (<div className={styles.weatherApp}>
     <aside className={styles.sidebar}>
       <nav>
@@ -128,7 +128,6 @@ const { data, isError, isLoading, refetch } = useQuery(
 
   if (isError) return 'An error has occurred';
   const { fileContent: { current }, province } = data || {};
-
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -222,6 +221,6 @@ function showWeather(){
       </main>
     </div>
   );
-}}}
+}}
 
 export default Index;
