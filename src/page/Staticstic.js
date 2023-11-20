@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './Layout.css'
 import './register.css'
 import './User.css'
-
 import './weatherDashboard.module.css'
 function ShowIframe(url){
     return (
@@ -34,10 +33,10 @@ const Statistics = (props) => {
 
     return <div class = "body-user" style={{flexDirection:'row', justifyContent:'space-around'}}>
    
-       <nav class = "sidebar">
+       <nav class = "sidebar" style={{flex: 1, backgroundColor:"#2C3E50"}}>
            <ul style = {{listStyle:'none', padding: 0, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-               <li style={{marginBottom: 10,cursor:'pointer'}} onClick={() => setUrl(mapTempUrl)} >Tempurature</li>
-               <li style={{marginBottom: 10,cursor:'pointer'}} onClick={() => setUrl(mapHumidityUrl)}>Humidity</li>
+               <li style={{marginBottom: 10,cursor:'pointer', color: 'white'}} onClick={() => setUrl(mapTempUrl)} >Tempurature</li>
+               <li style={{marginBottom: 10,cursor:'pointer', color: 'white'}} onClick={() => setUrl(mapHumidityUrl)}>Humidity</li>
            </ul>
        </nav>
        {ShowIframe(url)}
