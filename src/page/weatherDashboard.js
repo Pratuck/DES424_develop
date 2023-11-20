@@ -34,7 +34,7 @@ const Index = () => {
     setInputProvince(event.target.value);
   };
 
-  const { data, isError, isLoading, refetch } = useQuery(
+const { data, isError, isLoading, refetch } = useQuery(
     ['weather', requestProvince],
     () => fetchWeather(requestProvince),
     {
@@ -47,6 +47,34 @@ const Index = () => {
         <ul>
           <li>Dashboard</li>
           <li><a style = {{color: 'white'}} href ="/statistic">Statistics</a></li>
+          <li>Help</li>
+        </ul>
+      </nav>
+    </aside>
+    <main className={styles.mainContent}>
+      <header>
+        <div className={styles.searchBar}>
+          <input
+            type="text"
+            placeholder="Search For location"
+            value={inputProvince}
+            onChange={handleProvinceChange}
+          />
+          <button>Get Weather</button>
+        </div>
+      </header>
+      <div className={styles.weatherDashboard}>
+        Loading...
+      </div>
+    </main>
+  </div>);
+  if (!data) {
+    return (<div className={styles.weatherApp}>
+    <aside className={styles.sidebar}>
+      <nav>
+        <ul>
+          <li>Dashboard</li>
+          <li>Statistics</li>
           <li>Help</li>
         </ul>
       </nav>
@@ -148,7 +176,7 @@ const Index = () => {
     return weatherConditions[code] || "Unknown weather code";
   }
 
-
+function showWeather(){
   return (
     <div className={styles.weatherApp}>
       <aside className={styles.sidebar}>
@@ -194,6 +222,6 @@ const Index = () => {
       </main>
     </div>
   );
-}
+}}}
 
 export default Index;
