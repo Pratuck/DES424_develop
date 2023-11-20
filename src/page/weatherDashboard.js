@@ -101,7 +101,6 @@ const Index = () => {
   if (isError) return 'An error has occurred';
   const { fileContent: { current }, province } = data || {};
 
-
   const handleSubmit = (event) => {
     event.preventDefault();
     if(allProvinces.includes(inputProvince)){

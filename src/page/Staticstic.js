@@ -3,7 +3,7 @@ import './Layout.css'
 import './register.css'
 import './User.css'
 
-import './Weather_Dashboard.css'
+import './weatherDashboard.module.css'
 function ShowIframe(url){
     return (
       <div style={{flex: 6}}>
@@ -34,7 +34,7 @@ const Statistics = (props) => {
 
     return <div class = "body-user" style={{flexDirection:'row', justifyContent:'space-around'}}>
    
-       <nav className = "sidebar">
+       <nav class = "sidebar">
            <ul style = {{listStyle:'none', padding: 0, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                <li style={{marginBottom: 10,cursor:'pointer'}} onClick={() => setUrl(mapTempUrl)} >Tempurature</li>
                <li style={{marginBottom: 10,cursor:'pointer'}} onClick={() => setUrl(mapHumidityUrl)}>Humidity</li>
