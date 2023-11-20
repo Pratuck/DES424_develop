@@ -46,6 +46,10 @@
     background-color: #ECF0F1;
     box-sizing: border-box;
     margin: 0;
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    
+
   }
   
   .mainContent header {
@@ -74,6 +78,13 @@
     border-radius: 8px;
     box-sizing: border-box;
     margin: 0;
+    justify-content: space-between;
+    flex-grow: 1;
+    flex: 3; /* Adjust the flex ratio as per your design */
+    margin-right: 20px; /* Optional space between the two sections */
+    flex: 3; /* Adjusts the width, takes up more space */
+    /* If you want to ensure it's always first regardless of the source order */
+    order: 1; 
 
   }
   
@@ -219,4 +230,11 @@
       padding: 0;
     }
   }
+  .rightPanel {
+    flex: 1; /* Takes up less space */
+    /* If you want to ensure it's always second regardless of the source order */
+    order: 2;
+    display: flex;
+  }
+  
   

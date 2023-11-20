@@ -2,17 +2,41 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useQuery } from 'react-query';
 import styles from './weatherDashboard.module.css'
+import HourlyForecast from './hourlyForecast';
 
 const currentApiPath="https://y86e5uslt8.execute-api.us-east-1.amazonaws.com/v1/lambda?province="
+const currentApiPredictPath="https://5z1nkzh48i.execute-api.us-east-1.amazonaws.com/v1/future"
 const fetchWeather = async (requestProvince) => {
   const configRequest={
     headers:{
       "x-api-key":"52clg7ss2U5SZYE9PQCVs8GCzoAUBanO7SxDdhUF"
     }
   }
+  const configRequestPredict={
+    headers:{
+      "x-api-key":"j2hNGEaz2j4lsSWeOyKZZ8K7FBD4LFDw6zwmM4kt"
+    }
+  }
   if (!requestProvince) throw new Error("Province is required");
   const { data } = await axios.get(`${currentApiPath}${requestProvince}`,configRequest);
-  return data;
+  const responses = await Promise.all([
+   axios.get(`${currentApiPredictPath}?province=${requestProvince}`,configRequestPredict),
+   axios.get(`${currentApiPredictPath}2?province=${requestProvince}`,configRequestPredict),
+   axios.get(`${currentApiPredictPath}3?province=${requestProvince}`,configRequestPredict),
+   axios.get(`${currentApiPredictPath}4?province=${requestProvince}`,configRequestPredict),
+   axios.get(`${currentApiPredictPath}5?province=${requestProvince}`,configRequestPredict),
+   axios.get(`${currentApiPredictPath}6?province=${requestProvince}`,configRequestPredict),
+   axios.get(`${currentApiPredictPath}7?province=${requestProvince}`,configRequestPredict)
+  ])
+  return { data,    
+    prediction1: responses[0].data,
+    prediction2: responses[1].data,
+    prediction3: responses[2].data,
+    prediction4: responses[3].data,
+    prediction5: responses[4].data,
+    prediction6: responses[5].data,
+    prediction7: responses[6].data,
+     }
 };
 const allProvinces = ['Roi Et', 'Phitsanulok', 'Kamphaeng Phet', 'Suphan Buri',
   'Samut Sakhon', 'Ubon Ratchathani', 'Bangkok', 'Krabi', 'Nakhon Phanom',
@@ -24,7 +48,7 @@ const allProvinces = ['Roi Et', 'Phitsanulok', 'Kamphaeng Phet', 'Suphan Buri',
   'Nakhon Si Thammarat', 'Nong Khai', 'Phetchabun', 'Trat', 'Pathum Thani', 'Saraburi', 'Trang', 'Sukhothai',
   'Nong Bua Lamphu', 'Samut Songkhram', 'Rayong', 'Yala', 'Khon Kaen', 'Chumphon', 'Pattani', 'Amnat Charoen', 'Samut Prakan',
   'Narathiwat', 'Lampang', 'Nakhon Sawan', 'Mae Hong Son', 'Nakhon Ratchasima', 'Mukdahan', 'Ratchaburi', 'Lamphun', 'Kanchanaburi',
-  'Maha Sarakham', 'Tak', 'Phichit', 'Sisaket', 'Kalasin']
+  'Maha Sarakham', 'Tak', 'Phichit', 'Sisaket', 'Kalasin', "Chiang_Rai","Chiang_Mai"]
 
 const Index = () => {
   const [inputProvince, setInputProvince] = useState("")
@@ -99,7 +123,7 @@ const Index = () => {
   }
 
   if (isError) return 'An error has occurred';
-  const { fileContent: { current }, province } = data || {};
+  const { fileContent: { current }, province } = data.data || {};
 
 
   const handleSubmit = (event) => {
@@ -191,6 +215,15 @@ const Index = () => {
             <div><span>updated: {current.time}</span></div>
           </div>
         </div>
+        <div className={styles.rightPanel}>
+        <HourlyForecast predictionData={data.prediction1}  image={`weatherIcons/${interpretWeatherCode(current.weather_code).replace(/ /g, "_")}.png`}/>
+        <HourlyForecast predictionData={data.prediction2}  image={`weatherIcons/${interpretWeatherCode(current.weather_code).replace(/ /g, "_")}.png`}/>
+        <HourlyForecast predictionData={data.prediction3}  image={`weatherIcons/${interpretWeatherCode(current.weather_code).replace(/ /g, "_")}.png`}/>
+        <HourlyForecast predictionData={data.prediction4}  image={`weatherIcons/${interpretWeatherCode(current.weather_code).replace(/ /g, "_")}.png`} />
+        <HourlyForecast predictionData={data.prediction5}  image={`weatherIcons/${interpretWeatherCode(current.weather_code).replace(/ /g, "_")}.png`} />
+        <HourlyForecast predictionData={data.prediction6}  image={`weatherIcons/${interpretWeatherCode(current.weather_code).replace(/ /g, "_")}.png`}/>
+        <HourlyForecast predictionData={data.prediction7}  image={`weatherIcons/${interpretWeatherCode(current.weather_code).replace(/ /g, "_")}.png`}/>
+      </div>
       </main>
     </div>
   );
