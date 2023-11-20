@@ -34,16 +34,16 @@ const Index = () => {
     setInputProvince(event.target.value);
   };
 
-const { data, isError, isLoading, refetch } = useQuery(
+  const { data, isError, isLoading, refetch } = useQuery(
     ['weather', requestProvince],
     () => fetchWeather(requestProvince),
     {
       enabled: requestProvince !== "" // This query will automatically run if requestProvince is not empty
     }
   );
-  if (isLoading) return (<div class = "weatherApp" className={styles.weatherApp}>
-    <aside class={styles.sidebar}>
-      <nav class = "sidebar">
+  if (isLoading) return (<div className={styles.weatherApp}>
+    <aside className={styles.sidebar}>
+      <nav>
         <ul>
           <li>Dashboard</li>
           <li><a style = {{color: 'white'}} href ="/statistic">Statistics</a></li>
@@ -51,9 +51,9 @@ const { data, isError, isLoading, refetch } = useQuery(
         </ul>
       </nav>
     </aside>
-    <main class = "mainContent" className={styles.mainContent}>
+    <main className={styles.mainContent}>
       <header>
-        <div class = "searchBar" className={styles.searchBar}>
+        <div className={styles.searchBar}>
           <input
             type="text"
             placeholder="Search For location"
@@ -69,40 +69,12 @@ const { data, isError, isLoading, refetch } = useQuery(
     </main>
   </div>);
   if (!data) {
-    return (<div class = "weatherApp" className={styles.weatherApp}>
-    <aside class={styles.sidebar}>
-      <nav class = "sidebar">
-        <ul>
-          <li>Dashboard</li>
-          <li><a style = {{color: 'white'}} href ="/statistic">Statistics</a></li>
-          <li>Help</li>
-        </ul>
-      </nav>
-    </aside>
-    <main class = "mainContent" className={styles.mainContent}>
-      <header>
-        <div class = "searchBar" className={styles.searchBar}>
-          <input
-            type="text"
-            placeholder="Search For location"
-            value={inputProvince}
-            onChange={handleProvinceChange}
-          />
-          <button>Get Weather</button>
-        </div>
-      </header>
-      <div className={styles.weatherDashboard}>
-        Loading...
-      </div>
-    </main>
-  </div>);}
-  else if (!data) {
     return (<div className={styles.weatherApp}>
     <aside className={styles.sidebar}>
       <nav>
         <ul>
           <li>Dashboard</li>
-          <li>Statistics</li>
+          <li><a style = {{color: 'white'}} href ="/statistic">Statistics</a></li>
           <li>Help</li>
         </ul>
       </nav>
@@ -128,6 +100,7 @@ const { data, isError, isLoading, refetch } = useQuery(
 
   if (isError) return 'An error has occurred';
   const { fileContent: { current }, province } = data || {};
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -175,23 +148,23 @@ const { data, isError, isLoading, refetch } = useQuery(
     return weatherConditions[code] || "Unknown weather code";
   }
 
-function showWeather(){
+
   return (
-    <div class = "weatherApp" className={styles.weatherApp}>
-    <aside class={styles.sidebar}>
-      <nav class = "sidebar">
-        <ul>
-          <li>Dashboard</li>
-          <li><a style = {{color: 'white'}} href ="/statistic">Statistics</a></li>
-          <li>Help</li>
-        </ul>
-      </nav>
-    </aside>
-    <main class = "mainContent" className={styles.mainContent}>
-      <header>
-        <div class = "searchBar" className={styles.searchBar}>
-        <form onSubmit={handleSubmit}>
-          <input
+    <div className={styles.weatherApp}>
+      <aside className={styles.sidebar}>
+        <nav>
+          <ul>
+            <li>Dashboard</li>
+            <li><a style = {{color: 'white'}} href ="/statistic">Statistics</a></li>
+            <li>Help</li>
+          </ul>
+        </nav>
+      </aside>
+      <main className={styles.mainContent}>
+        <header>
+          <div className={styles.searchBar}>
+            <form onSubmit={handleSubmit}>
+              <input
                 type="text"
                 placeholder="Search For location"
                 value={inputProvince}
@@ -221,6 +194,6 @@ function showWeather(){
       </main>
     </div>
   );
-}}
+}
 
 export default Index;

@@ -38,6 +38,7 @@ const Registers = () => {
           setMsg("Account Created!")
           navigate("/login")
       }).catch(error=>{
+        if(!error.response) return;
         if(error.response.status=== 401){
           setMsg(error.response.data.message)
         }else{
