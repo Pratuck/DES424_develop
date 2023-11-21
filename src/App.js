@@ -14,7 +14,7 @@ import { getToken,resetUserSession,setUserSession,getUser } from "./services/Aut
 import axios from "axios";
 
 const queryClient = new QueryClient()
-const verifyPath="https://2e90icdje8.execute-api.us-east-1.amazonaws.com/v1/verify"
+const verifyPath="https://8mciuqteg9.execute-api.us-east-1.amazonaws.com/v1/login"
 
 
 export default function App() {
@@ -25,7 +25,7 @@ export default function App() {
     }
     const requestConfig = {
       headers: {
-        'x-api-key': 's9Uopm0uTA1ZxdciS5ug16LFli4c8C951epDtZlC'
+        'x-api-key': 'l0lLnJDN2T7Nuet3qHdzC3x0iTtPffwo3GcdavGo'
       }
     }
     const requestBody = {

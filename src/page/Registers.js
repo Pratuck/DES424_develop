@@ -3,7 +3,7 @@ import './register.css'
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-const registerPath="https://2e90icdje8.execute-api.us-east-1.amazonaws.com/v1/register"
+const registerPath="https://8mciuqteg9.execute-api.us-east-1.amazonaws.com/v1/register"
 const Registers = () => {
   const [username,setUsername]=useState("");
   const [cPassword,setCPassword]=useState("")
@@ -25,7 +25,7 @@ const Registers = () => {
     }
     const requestConfig={
       headers:{
-        "x-api-key":"s9Uopm0uTA1ZxdciS5ug16LFli4c8C951epDtZlC"
+        "x-api-key":"l0lLnJDN2T7Nuet3qHdzC3x0iTtPffwo3GcdavGo"
       }
     }
     const requestBody={
