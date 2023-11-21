@@ -12,7 +12,7 @@ const User = () => {
   const [copied, setCopied] = useState(false);
 
   const username=getUser().username
-  const token=getUser().apikey.S
+  const token=getUser().apikey
   let imgscr = userImage;
   const getApi=()=>{
     setValidReauest(false)

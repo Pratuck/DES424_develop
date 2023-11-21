@@ -38,7 +38,8 @@ const Index = () => {
     ['weather', requestProvince],
     () => fetchWeather(requestProvince),
     {
-      enabled: requestProvince !== "" // This query will automatically run if requestProvince is not empty
+      // enabled: inputProvince !== "" // This query will automatically run if requestProvince is not empty
+      enabled: requestProvince !== "Bangkok" // This query will automatically run if requestProvince is not empty
     }
   );
   if (isLoading) return (<div className={styles.weatherApp}>
