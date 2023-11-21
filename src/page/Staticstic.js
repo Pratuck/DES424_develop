@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Layout.css'
 import './register.css'
 import './User.css'
-import './weatherDashboard.module.css'
+import styles from './weatherDashboard.module.css'
 function ShowIframe(url){
     return (
       <div style={{flex: 6}}>
@@ -26,12 +26,14 @@ const Statistics = (props) => {
 
     return <div class = "body-user" style={{flexDirection:'row', justifyContent:'space-around'}}>
    
-       <nav class = "sidebar" style={{flex: 1, backgroundColor:"#2C3E50"}}>
-           <ul style = {{listStyle:'none', padding: 0, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-               <li style={{marginBottom: 10,cursor:'pointer', color: 'white'}} onClick={() => setUrl(mapTempUrl)} >Map Tempurature</li>
-               <li style={{marginBottom: 10,cursor:'pointer', color: 'white'}} onClick={() => setUrl(allUrl)}>Choose with region</li>
-           </ul>
-       </nav>
+      <aside className={styles.sidebar}>
+        <nav style={{flex: 1, backgroundColor:"#2C3E50"}}>
+            <ul style = {{listStyle:'none', padding: 0, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                <li><button class = "sidebarbutton" onClick={() => setUrl(mapTempUrl)} >Map Tempurature</button></li>
+                <li><button class = "sidebarbutton"onClick={() => setUrl(mapTempUrl)} >Choose with region</button></li>
+            </ul>
+        </nav>
+       </aside>
        {ShowIframe(url)}
     </div>
    };

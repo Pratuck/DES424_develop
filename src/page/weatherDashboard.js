@@ -2,17 +2,35 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useQuery } from 'react-query';
 import styles from './weatherDashboard.module.css'
-
-const currentApiPath="https://y86e5uslt8.execute-api.us-east-1.amazonaws.com/v1/lambda?province="
+import HourlyForecast from './hourlyForecast';
+const currentApiPredictPath="https://8mciuqteg9.execute-api.us-east-1.amazonaws.com/v1/dashboard/future"
+const currentApiPath="https://8mciuqteg9.execute-api.us-east-1.amazonaws.com/v1/dashboard/current?province="
 const fetchWeather = async (requestProvince) => {
   const configRequest={
     headers:{
-      "x-api-key":"52clg7ss2U5SZYE9PQCVs8GCzoAUBanO7SxDdhUF"
+      "x-api-key":"l0lLnJDN2T7Nuet3qHdzC3x0iTtPffwo3GcdavGo"
     }
+  
   }
   if (!requestProvince) throw new Error("Province is required");
   const { data } = await axios.get(`${currentApiPath}${requestProvince}`,configRequest);
-  return data;
+  const responses = await Promise.all([
+    axios.get(`${currentApiPredictPath}1?province=${requestProvince}`,configRequest),
+    axios.get(`${currentApiPredictPath}2?province=${requestProvince}`,configRequest),
+    axios.get(`${currentApiPredictPath}3?province=${requestProvince}`,configRequest),
+    axios.get(`${currentApiPredictPath}4?province=${requestProvince}`,configRequest),
+    axios.get(`${currentApiPredictPath}5?province=${requestProvince}`,configRequest),
+    axios.get(`${currentApiPredictPath}6?province=${requestProvince}`,configRequest),
+   ])
+  return { data,    
+    prediction1: responses[0].data,
+    prediction2: responses[1].data,
+    prediction3: responses[2].data,
+    prediction4: responses[3].data,
+    prediction5: responses[4].data,
+    prediction6: responses[5].data,
+
+     };
 };
 const allProvinces = ['Roi Et', 'Phitsanulok', 'Kamphaeng Phet', 'Suphan Buri',
   'Samut Sakhon', 'Ubon Ratchathani', 'Bangkok', 'Krabi', 'Nakhon Phanom',
@@ -24,7 +42,7 @@ const allProvinces = ['Roi Et', 'Phitsanulok', 'Kamphaeng Phet', 'Suphan Buri',
   'Nakhon Si Thammarat', 'Nong Khai', 'Phetchabun', 'Trat', 'Pathum Thani', 'Saraburi', 'Trang', 'Sukhothai',
   'Nong Bua Lamphu', 'Samut Songkhram', 'Rayong', 'Yala', 'Khon Kaen', 'Chumphon', 'Pattani', 'Amnat Charoen', 'Samut Prakan',
   'Narathiwat', 'Lampang', 'Nakhon Sawan', 'Mae Hong Son', 'Nakhon Ratchasima', 'Mukdahan', 'Ratchaburi', 'Lamphun', 'Kanchanaburi',
-  'Maha Sarakham', 'Tak', 'Phichit', 'Sisaket', 'Kalasin']
+  'Maha Sarakham', 'Tak', 'Phichit', 'Sisaket', 'Kalasin','Chiang_Mai', 'Chaing_Rai']
 
 const Index = () => {
   const [inputProvince, setInputProvince] = useState("")
@@ -38,8 +56,10 @@ const Index = () => {
     ['weather', requestProvince],
     () => fetchWeather(requestProvince),
     {
-      // enabled: inputProvince !== "" // This query will automatically run if requestProvince is not empty
-      enabled: requestProvince !== "Bangkok" // This query will automatically run if requestProvince is not empty
+      enabled: requestProvince !== "",
+      refetchOnWindowFocus: false, // Prevents refetching when the window gains focus
+      refetchOnReconnect: false, // Prevents refetching when the browser reconnects to the internet
+      refetchOnMount: true, // Enables refetching on mount
     }
   );
   if (isLoading) return (<div className={styles.weatherApp}>
@@ -47,7 +67,7 @@ const Index = () => {
       <nav>
         <ul>
           <li>Dashboard</li>
-          <li><a style = {{color: 'white'}} href ="/statistic">Statistics</a></li>
+          <li><button><a style = {{color: 'white'}} href ="/statistic">Statistics</a></button></li>
           <li>Help</li>
         </ul>
       </nav>
@@ -71,36 +91,36 @@ const Index = () => {
   </div>);
   if (!data) {
     return (<div className={styles.weatherApp}>
-    <aside className={styles.sidebar}>
-      <nav>
-        <ul>
-          <li>Dashboard</li>
-          <li><a style = {{color: 'white'}} href ="/statistic">Statistics</a></li>
-          <li>Help</li>
-        </ul>
-      </nav>
-    </aside>
-    <main className={styles.mainContent}>
-      <header>
-        <div className={styles.searchBar}>
-          <input
-            type="text"
-            placeholder="Search For location"
-            value={inputProvince}
-            onChange={handleProvinceChange}
-          />
-          <button>Get Weather</button>
+      <aside className={styles.sidebar}>
+        <nav>
+          <ul>
+            <li>Dashboard</li>
+            <li><button><a style = {{color: 'white'}} href ="/statistic">Statistics</a></button></li>
+            <li>Help</li>
+          </ul>
+        </nav>
+      </aside>
+      <main className={styles.mainContent}>
+        <header>
+          <div className={styles.searchBar}>
+            <input
+              type="text"
+              placeholder="Search For location"
+              value={inputProvince}
+              onChange={handleProvinceChange}
+            />
+            <button>Get Weather</button>
+          </div>
+        </header>
+        <div className={styles.weatherDashboard}>
+          No Weather 
         </div>
-      </header>
-      <div className={styles.weatherDashboard}>
-        No Weather 
-      </div>
-    </main>
-  </div>);;
+      </main>
+    </div>);;
   }
 
   if (isError) return 'An error has occurred';
-  const { fileContent: { current }, province } = data || {};
+  const { fileContent: { current }, province } = data.data || {};
 
 
   const handleSubmit = (event) => {
@@ -156,7 +176,7 @@ const Index = () => {
         <nav>
           <ul>
             <li>Dashboard</li>
-            <li><a style = {{color: 'white'}} href ="/statistic">Statistics</a></li>
+            <li><button><a style = {{color: 'white', fontFamily: "'Arial', sans-serif"}} href ="/statistic">Statistics</a></button></li>
             <li>Help</li>
           </ul>
         </nav>
@@ -192,7 +212,16 @@ const Index = () => {
             <div><span>updated: {current.time}</span></div>
           </div>
         </div>
+        <div className={styles.rightPanel}>
+        <HourlyForecast predictionData={data.prediction1}  image={`weatherIcons/${interpretWeatherCode(data.prediction1.wmo).replace(/ /g, "_")}.png`}/>
+        <HourlyForecast predictionData={data.prediction2}  image={`weatherIcons/${interpretWeatherCode(data.prediction2.wmo).replace(/ /g, "_")}.png`}/>
+        <HourlyForecast predictionData={data.prediction3}  image={`weatherIcons/${interpretWeatherCode(data.prediction3.wmo).replace(/ /g, "_")}.png`}/>
+        <HourlyForecast predictionData={data.prediction4}  image={`weatherIcons/${interpretWeatherCode(data.prediction4.wmo).replace(/ /g, "_")}.png`} />
+        <HourlyForecast predictionData={data.prediction5}  image={`weatherIcons/${interpretWeatherCode(data.prediction5.wmo).replace(/ /g, "_")}.png`} />
+        <HourlyForecast predictionData={data.prediction6}  image={`weatherIcons/${interpretWeatherCode(data.prediction6.wmo).replace(/ /g, "_")}.png`}/>
+      </div>
       </main>
+     
     </div>
   );
 }
